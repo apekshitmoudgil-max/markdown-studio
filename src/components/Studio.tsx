@@ -277,15 +277,15 @@ export function Studio() {
           </>
         )}
 
-        <main ref={mainRef} className="flex flex-1 overflow-hidden">
+        <main ref={mainRef} className="flex flex-1 overflow-hidden min-w-0">
           {editorOpen ? (
             <>
               <section
                 style={{ width: `${editorPct * 100}%` }}
-                className="flex shrink-0 flex-col"
+                className="flex shrink-0 flex-col min-w-0"
               >
                 <PaneHeader label={activePath ? activePath : "No file open"} muted={!activePath} />
-                <div className="flex-1 overflow-hidden">
+                <div className="flex-1 overflow-hidden min-w-0">
                   <Editor
                     value={content}
                     onChange={handleContentChange}
@@ -295,20 +295,20 @@ export function Studio() {
                 </div>
               </section>
               <ResizeHandle onResize={handleEditorResize} onCommit={commitEditorPct} />
-              <section className="flex flex-1 flex-col">
+              <section className="flex flex-1 flex-col min-w-0">
                 <PaneHeader label="Preview" />
-                <div className="flex-1 overflow-hidden">
+                <div className="flex-1 overflow-hidden min-w-0">
                   <Preview source={content || "*Pick a file to preview.*"} fluid={false} />
                 </div>
               </section>
             </>
           ) : (
-            <section className="flex flex-1 flex-col">
+            <section className="flex flex-1 flex-col min-w-0">
               <PaneHeader
                 label={activePath ? `Preview. ${activePath}` : "Preview"}
                 muted={!activePath}
               />
-              <div className="flex-1 overflow-hidden">
+              <div className="flex-1 overflow-hidden min-w-0">
                 <Preview source={content || "*Pick a file to preview.*"} fluid />
               </div>
             </section>
